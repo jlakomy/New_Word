@@ -11,7 +11,9 @@ namespace N_WORD.Entities
 {
     public class N_WordDbContext : DbContext 
     {
-        private string _connectionString = "Server=DESKTOP-E304BB6;DataBase=N_WORD_Db;Trusted_Connection=True;";
+        public N_WordDbContext(DbContextOptions<N_WordDbContext> options) : base(options)
+        {
+        }
         public DbSet<Word> Words { get; set;}
         public DbSet<Category> Categories { get; set;}
         public DbSet<User> Users { get; set;}
@@ -41,9 +43,6 @@ namespace N_WORD.Entities
                 .IsRequired()
                 .HasMaxLength(25);
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
-        }
+        
     }
 }
