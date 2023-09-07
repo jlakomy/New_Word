@@ -81,9 +81,8 @@ namespace N_WORD.Services
                 .FirstOrDefault(w => w.Id == id);
 
             if (category is null) throw new NotFoundException("Category not found");
-
-            category.Name= dto.Name;
-            category.Description= dto.Description;
+            if(dto.Name != null) category.Name= dto.Name;
+            if(dto.Description != null )category.Description= dto.Description;
 
             _dbContext.SaveChanges();
         }

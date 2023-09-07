@@ -61,7 +61,7 @@ namespace N_WORD
                 };
             });
             services.AddDbContext<N_WordDbContext>(options =>
-    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers().AddFluentValidation();
             services.AddDbContext<N_WordDbContext>();
             services.AddScoped<N_WordSeeder>();

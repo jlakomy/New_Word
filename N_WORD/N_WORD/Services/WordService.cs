@@ -20,6 +20,7 @@ namespace N_WORD.Services
         public WordDto GetById(int categoryId, int wordId);
         List<WordDto> GetAll(int categoryId);
         public void Delete(int categoryId, int wordId);
+        public void Update(int categoryId, int wordId, UpdateWordDto dto);
     }
     public class WordService : IWordService
     {
@@ -73,8 +74,8 @@ namespace N_WORD.Services
 
             if (category is null) throw new NotFoundException("Category not found");
 
-            var worsDtos = _mapper.Map<List<WordDto>>(category.Words);
-            return worsDtos;
+            var wordDtos = _mapper.Map<List<WordDto>>(category.Words);
+            return wordDtos;
         }
         public void Delete(int categoryId, int wordId)
         {
@@ -88,6 +89,23 @@ namespace N_WORD.Services
                 .FirstOrDefault(w => w.Id == wordId);
             if (word is null || word.CategoryId != categoryId) throw new NotFoundException("Word not found");
             _dbContext.Words.Remove(word);
+            _dbContext.SaveChanges();
+        }
+        public void Update(int categoryId, int wordId, UpdateWordDto dto)
+        {
+            var category = _dbContext.Categories
+               .FirstOrDefault(w => w.Id == categoryId);
+
+            if (category is null) throw new NotFoundException("Category not found");
+
+            var word = _dbContext
+                .Words
+                .FirstOrDefault(w => w.Id == wordId);
+            if (word is null || word.CategoryId != categoryId) throw new NotFoundException("Word not found");
+            if(dto.EnMeaning != null) word.EnMeaning = dto.EnMeaning;
+            if (dto.PlMeaning != null) word.PlMeaning = dto.PlMeaning;
+            if (dto.Description != null) word.Description = dto.Description;
+            if (dto.ExampleSentence != null) word.ExampleSentence = dto.ExampleSentence;
             _dbContext.SaveChanges();
         }
     }

@@ -45,18 +45,21 @@ namespace N_WORD
                             PlMeaning = "Widelec",
                             EnMeaning = "Fork",
                             Description = "Smaller trident",
+                            ExampleSentence = "I will stab you with this fork",
                         },
                         new Word()
                         {
                             PlMeaning = "Patelnia",
                             EnMeaning = "Pan",
                             Description = "Shallow utensil use for frying",
+                            ExampleSentence = "This pan is unwashed",
                         },
                         new Word()
                         {
                             PlMeaning = "Baranina",
                             EnMeaning = "Lamb",
                             Description = "Meet obtained from sheeps",
+                            ExampleSentence = "Kebabs are originaly made with lamb",
                         },
                     },
                 },
@@ -71,18 +74,21 @@ namespace N_WORD
                             PlMeaning = "Pies",
                             EnMeaning = "Dog",
                             Description = "Human's best friend",
+                            ExampleSentence = "Dog is human best friend",
                         },
                         new Word()
                         {
                             PlMeaning = "Kot",
                             EnMeaning = "Cat",
                             Description = "Smaller and cuter lion",
+                            ExampleSentence = "My cat broke the lamp yesterday",
                         },
                         new Word()
                         {
                             PlMeaning = "Smycz",
                             EnMeaning = "Lead",
                             Description = "You need it to take youe pet for a walk",
+                            ExampleSentence = "I want to take my dog for a walk, but i cant find the lead",
                         },
                     },
                 }

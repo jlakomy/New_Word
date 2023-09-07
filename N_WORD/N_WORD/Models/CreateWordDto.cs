@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using N_WORD.Entities;
+using N_WORD.Migrations;
 using N_WORD.Models;
 using N_WORD.Services;
 using System;
@@ -21,8 +22,9 @@ namespace N_WORD.Models
         [Required]
         [MaxLength(20)]
         public string EnMeaning { get; set; }
+        [Required]
         public string Description { get; set; }
-
-        public int CategoryId { get; set; }
+        [Required]
+        public string ExampleSentence { get; set; }
     }
 }

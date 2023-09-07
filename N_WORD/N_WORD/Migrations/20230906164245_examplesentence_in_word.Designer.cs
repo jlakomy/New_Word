@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using N_WORD.Entities;
 
 namespace N_WORD.Migrations
 {
     [DbContext(typeof(N_WordDbContext))]
-    partial class N_WordDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230906164245_examplesentence_in_word")]
+    partial class examplesentence_in_word
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -33,7 +33,15 @@ namespace N_WORD.Controllers
 
             return NoContent();
         }
+        [HttpPut("{wordId}")]
+        [Authorize(Roles = "Admin,Menager")]
+        public ActionResult Update([FromRoute] int categoryId, [FromRoute] int wordId, [FromBody] UpdateWordDto dto)
+        {
+            _WordService.Update(categoryId, wordId, dto);
+            return Ok();
+        }
         [HttpPost]
+        [Authorize(Roles = "Admin,Menager")]
         public ActionResult Post([FromRoute] int categoryId, [FromBody] CreateWordDto dto)
         {
             var wordId = _WordService.Create(categoryId, dto);
@@ -41,7 +49,6 @@ namespace N_WORD.Controllers
             return Created($"/api/category/{categoryId}/word/{wordId}", null);
         }
         [HttpGet("{wordId}")]
-        [Authorize(Roles = "Admin,Menager")]
         public ActionResult<WordDto> GetById([FromRoute] int categoryId, [FromRoute] int wordId)
         {
             var word = _WordService.GetById(categoryId, wordId);
